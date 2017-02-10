@@ -1,0 +1,18 @@
+{
+	"permissions": "*",
+	"autoload": "autoloader.json",
+	"dependencies": ["base", "email"],
+	"languages":{
+		"fa_IR" : "langs/fa_IR.json"
+	},
+	"events": [
+		{
+			"name":"\\packages\\email\\events\\senders",
+			"listener": "listeners\\settings\\email@senders_list"
+		},
+		{
+			"name":"\\packages\\base\\view\\events\\afterLoad",
+			"listener": "listeners\\settings\\email@senders_addAssets"
+		}
+	]
+}
