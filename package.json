@@ -2,6 +2,7 @@
 	"permissions": "*",
 	"autoload": "autoloader.json",
 	"dependencies": ["base", "email"],
+	"frontend":"frontend",
 	"languages":{
 		"fa_IR" : "langs/fa_IR.json"
 	},
