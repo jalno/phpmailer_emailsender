@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+		"module": "commonjs",
+   		"target": "es5",
+		"sourceMap": false,
+		"removeComments": true
+    },
+	"files": [
+        "./assets/ts/classes/Senders.ts",
+        "./assets/ts/Main.ts"
+    ]
+}
