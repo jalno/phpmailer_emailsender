@@ -1,17 +1,23 @@
 <?php
 namespace packages\phpmailer_emailsender;
-use \packages\email\sent;
-use \packages\email\sender;
-use \packages\email\sender\handler;
-use \packages\phpmailer_emailsender\PHPMailer;
-class api extends handler{
+
+use packages\email\{Sender, Sent};
+use packages\phpmailer_emailsender\PHPMailer;
+
+class API extends Sender\handler {
+
+	/**
+	 * @var Sender
+	 */
 	private $sender;
-	public function __construct(sender $sender){
+
+	public function __construct(Sender $sender) {
 		$this->sender = $sender;
 	}
-	public function send(sent $email){
+
+	public function send(Sent $email) {
 		$mailer = new PHPMailer();
-		if($this->sender->param('phpmailer_smtp_enable')){
+		if ($this->sender->param('phpmailer_smtp_enable')) {
 			$mailer->isSMTP();
 			$mailer->Hostname = $this->sender->param('phpmailer_smtp_hostname');
 			$mailer->Host = $this->sender->param('phpmailer_smtp_hostname');
@@ -33,11 +39,27 @@ class api extends handler{
 		$mailer->setFrom($email->sender_address->address, $email->sender_address->name);
 		$mailer->addAddress($email->receiver_address, $email->receiver_name);
 		$mailer->Subject = $email->subject;
+
+		$inlines = [];
+
+		if (preg_match_all("/cid:([\w,\-_\.]+)/", $email->html, $matches)) {
+			foreach ($matches[1] as $inline) {
+				if (!in_array($inline, $inlines)) {
+					$inlines[] = $inline;
+				}
+			}
+		}
+
+		foreach ($email->attachments as $attachment) {
+			if (in_array($attachment->name, $inlines)) {
+				$mailer->addEmbeddedImage($attachment->file, $attachment->name);
+			} else {
+				$mailer->addAttachment($attachment->file, $attachment->name);
+			}
+		}
+
 		$mailer->msgHTML($email->html);
 		$mailer->AltBody = $email->text;
-		foreach($email->attachments as $attachment){
-			$mailer->addAttachment($attachment->file, $attachment->name);
-		}
-		return $mailer->send() ? sent::sent : sent::failed;
+		return $mailer->send() ? Sent::sent : Sent::failed;
 	}
 }
