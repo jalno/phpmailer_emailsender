@@ -1,0 +1,17 @@
+{
+	"author": {
+		"name" : "Amir.h Yeganemehr",
+		"website" : "http://yeganemehr.ir/"
+	},
+	"rtl": false,
+	"phrases":{
+		"settings.email.senders.phpmailer.smtp.enable":"Use SMTP?",
+		"settings.email.senders.phpmailer.smtp.enable.yes":"Yes",
+		"settings.email.senders.phpmailer.smtp.enable.no":"No",
+		"settings.email.senders.phpmailer.smtp.hostname": "SMTP hostname:",
+		"settings.email.senders.phpmailer.smtp.port": "SMTP port:",
+		"settings.email.senders.phpmailer.smtp.username": "Username:",
+		"settings.email.senders.phpmailer.smtp.password": "Password:",
+		"email.sender.phpmailer": "PHP Mailer"
+	}
+}
