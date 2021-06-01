@@ -1,7 +1,7 @@
 {
 	"permissions": "*",
 	"autoload": {
-		"directories": ["libraries", "listeners", "processes"]
+		"directories": ["libraries", "listeners"]
 	},
 	"dependencies": ["base", "email", "phpmailer"],
 	"languages":{
