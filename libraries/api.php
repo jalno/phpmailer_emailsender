@@ -2,7 +2,7 @@
 namespace packages\phpmailer_emailsender;
 
 use packages\email\{Sender, Sent};
-use packages\phpmailer_emailsender\PHPMailer;
+use packages\phpmailer\PHPMailer;
 
 class API extends Sender\handler {
 

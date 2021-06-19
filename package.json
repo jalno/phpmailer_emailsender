@@ -1,7 +1,9 @@
 {
 	"permissions": "*",
-	"autoload": "autoloader.json",
-	"dependencies": ["base", "email"],
+	"autoload": {
+		"directories": ["libraries", "listeners"]
+	},
+	"dependencies": ["base", "email", "phpmailer"],
 	"languages":{
 		"fa_IR" : "langs/fa_IR.json",
 		"en_US" : "langs/en_US.json"
