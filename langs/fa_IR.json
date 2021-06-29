@@ -5,7 +5,7 @@
 	},
 	"rtl": true,
 	"phrases":{
-		"email.sender.azinsms" : "ارسال کننده داخلی",
+		"email.sender.phpmailer": "PHP Mailer",
 		"settings.email.senders.phpmailer.smtp.enable":"استفاده از SMTP",
 		"settings.email.senders.phpmailer.smtp.enable.yes":"بلی",
 		"settings.email.senders.phpmailer.smtp.enable.no":"خیر",
@@ -13,9 +13,9 @@
 		"settings.email.senders.phpmailer.smtp.port": "پورت سرور SMTP",
 		"settings.email.senders.phpmailer.smtp.username": "نام کاربری",
 		"settings.email.senders.phpmailer.smtp.password": "کلمه عبور",
-		"settings.sms.gateways.azinsms.apikey": "کلید",
-		"settings.sms.gateways.azinsms.apikey.generate": "ایجاد",
-		"settings.sms.gateways.azinsms.geturl":"درگاه دریافت پیامک",
-		"settings.azinsms_smsgateway" : "تنظیمات پنل پیامک آذین پیامک"
+		"settings.email.senders.phpmailer.smtp.secure": "امنیت اتصال:",
+		"settings.email.senders.phpmailer.smtp.secure.none": "ندارد",
+		"settings.email.senders.phpmailer.smtp.secure.ssl": "SSL",
+		"settings.email.senders.phpmailer.smtp.secure.tls": "TLS"
 	}
 }

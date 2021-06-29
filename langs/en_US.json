@@ -12,6 +12,10 @@
 		"settings.email.senders.phpmailer.smtp.port": "SMTP port:",
 		"settings.email.senders.phpmailer.smtp.username": "Username:",
 		"settings.email.senders.phpmailer.smtp.password": "Password:",
+		"settings.email.senders.phpmailer.smtp.secure": "Connection security:",
+		"settings.email.senders.phpmailer.smtp.secure.none": "None",
+		"settings.email.senders.phpmailer.smtp.secure.ssl": "SSL",
+		"settings.email.senders.phpmailer.smtp.secure.tls": "TLS",
 		"email.sender.phpmailer": "PHP Mailer"
 	}
 }

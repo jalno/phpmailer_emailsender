@@ -41,42 +41,69 @@ class email{
 			'empty' => true,
 			'optional' => true
 		));
+		$sender->addInput(array(
+			'name' => 'phpmailer_smtp_secure',
+			'type' => 'string',
+			'empty' => true,
+			'optional' => true,
+			'values' => ['', 'tls', 'ssl'],
+		));
 		$sender->addField(array(
 			'type' => 'select',
 			'name' => 'phpmailer_smtp_enable',
-			'label' => translator::trans('settings.email.senders.phpmailer.smtp.enable'),
+			'label' => t('settings.email.senders.phpmailer.smtp.enable'),
 			'options' => array(
 				array(
 					'value' => 1,
-					'title' => translator::trans('settings.email.senders.phpmailer.smtp.enable.yes')
+					'title' => t('settings.email.senders.phpmailer.smtp.enable.yes')
 				),
 				array(
 					'value' => 0,
-					'title' => translator::trans('settings.email.senders.phpmailer.smtp.enable.no')
+					'title' => t('settings.email.senders.phpmailer.smtp.enable.no')
 				)
 			)
 		));
 		$sender->addField(array(
 			'name' => 'phpmailer_smtp_hostname',
-			'label' => translator::trans('settings.email.senders.phpmailer.smtp.hostname'),
+			'label' => t('settings.email.senders.phpmailer.smtp.hostname'),
 			'ltr' => true
 		));
 		$sender->addField(array(
 			'type' => 'number',
 			'name' => 'phpmailer_smtp_port',
-			'label' => translator::trans('settings.email.senders.phpmailer.smtp.port'),
+			'label' => t('settings.email.senders.phpmailer.smtp.port'),
 			'ltr' => true
 		));
 		$sender->addField(array(
 			'name' => 'phpmailer_smtp_username',
-			'label' => translator::trans('settings.email.senders.phpmailer.smtp.username'),
+			'label' => t('settings.email.senders.phpmailer.smtp.username'),
 			'ltr' => true
 		));
 		$sender->addField(array(
 			'type' => 'password',
 			'name' => 'phpmailer_smtp_password',
-			'label' => translator::trans('settings.email.senders.phpmailer.smtp.password'),
+			'label' => t('settings.email.senders.phpmailer.smtp.password'),
 			'ltr' => true
+		));
+		$sender->addField(array(
+			'type' => 'select',
+			'name' => 'phpmailer_smtp_secure',
+			'label' => t('settings.email.senders.phpmailer.smtp.secure'),
+			'ltr' => true,
+			'options' => array(
+				array(
+					'value' => '',
+					'title' => t('settings.email.senders.phpmailer.smtp.secure.none')
+				),
+				array(
+					'value' => 'ssl',
+					'title' => t('settings.email.senders.phpmailer.smtp.secure.ssl')
+				),
+				array(
+					'value' => 'tls',
+					'title' => t('settings.email.senders.phpmailer.smtp.secure.tls')
+				),
+			)
 		));
 		$sender->setController(__CLASS__.'@validate');
 		$senders->addSender($sender);

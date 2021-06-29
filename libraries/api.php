@@ -2,7 +2,7 @@
 namespace packages\phpmailer_emailsender;
 
 use packages\email\{Sender, Sent};
-use packages\phpmailer\PHPMailer;
+use packages\phpmailer\{PHPMailer, SMTP};
 
 class API extends Sender\handler {
 
@@ -22,11 +22,16 @@ class API extends Sender\handler {
 			$mailer->Hostname = $this->sender->param('phpmailer_smtp_hostname');
 			$mailer->Host = $this->sender->param('phpmailer_smtp_hostname');
 			$mailer->Port = $this->sender->param('phpmailer_smtp_port');
-			switch($mailer->Port){
-				case(465):$mailer->SMTPSecure = 'ssl';break;
-				case(587):$mailer->SMTPSecure = 'tls';break;
-				default:$mailer->SMTPSecure = '';break;
+			$secure = $this->sender->param('phpmailer_smtp_secure');
+			if ($secure === null or $secure === false) {
+				switch($mailer->Port){
+					case(465):$secure = 'ssl';break;
+					case(587):$secure = 'tls';break;
+					default:$secure = '';break;
+				}
 			}
+			$mailer->SMTPSecure = $secure;
+			
 			$username = $this->sender->param('phpmailer_smtp_username');
 			$password = $this->sender->param('phpmailer_smtp_password');
 			if($username or $password){
