@@ -17,6 +17,7 @@ class API extends Sender\handler {
 
 	public function send(Sent $email) {
 		$mailer = new PHPMailer();
+		$mailer->SMTPAutoTLS = false;
 		if ($this->sender->param('phpmailer_smtp_enable')) {
 			$mailer->isSMTP();
 			$mailer->Hostname = $this->sender->param('phpmailer_smtp_hostname');
