@@ -4,7 +4,7 @@ namespace packages\phpmailer_emailsender;
 use packages\email\{Sender, Sent};
 use packages\phpmailer\{PHPMailer, SMTP};
 
-class API extends Sender\handler {
+class API extends Sender\Handler {
 
 	/**
 	 * @var Sender

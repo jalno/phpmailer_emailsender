@@ -1,17 +1,17 @@
 <?php
-namespace packages\phpmailer_emailsender\listeners\settings;
+namespace packages\phpmailer_emailsender\Listeners\Settings;
 use \packages\base;
-use \packages\base\translator;
-use \packages\base\event;
-use \packages\base\frontend\theme;
-use \packages\base\packages;
-use \packages\base\inputValidation;
-use \packages\email\events\senders;
-use \packages\email\views\settings\senders as senderViews;
-class email{
+use \packages\base\Translator;
+use \packages\base\Event;
+use \packages\base\Frontend\Theme;
+use \packages\base\Packages;
+use \packages\base\InputValidation;
+use \packages\email\Events\Senders;
+use \packages\email\Views\Settings\Senders as SenderViews;
+class Email{
 	public function senders_list(senders $senders){
-		$sender = new senders\sender("phpmailer");
-		$sender->setHandler('\\packages\\phpmailer_emailsender\\api');
+		$sender = new Senders\Sender("phpmailer");
+		$sender->setHandler(\packages\phpmailer_emailsender\API::class);
 		$sender->addInput(array(
 			'name' => 'phpmailer_smtp_enable',
 			'type' => 'bool',
@@ -112,18 +112,18 @@ class email{
 		if($inputs['phpmailer_smtp_enable']){
 			foreach(array('hostname', 'port') as $input){
 				if(!isset($inputs['phpmailer_smtp_'.$input]) or !$inputs['phpmailer_smtp_'.$input]){
-					throw new inputValidation('phpmailer_smtp_'.$input);
+					throw new InputValidation('phpmailer_smtp_'.$input);
 				}
 			}
 			if($inputs['phpmailer_smtp_port'] < 1 and $inputs['phpmailer_smtp_port'] > 65535){
-				throw new inputValidation('phpmailer_smtp_port');
+				throw new InputValidation('phpmailer_smtp_port');
 			}
 		}
 	}
-	public function senders_addAssets(event $event){
+	public function senders_addAssets(Event $event){
 		$view = $event->getView();
 		if($view instanceof senderViews\add or $view instanceof senderViews\edit){
-			$view->addJSFile(packages::package('phpmailer_emailsender')->url('frontend/assets/js/pages/senders.js'));
+			$view->addJSFile(Packages::package('phpmailer_emailsender')->url('frontend/assets/js/pages/senders.js'));
 		}
 	}
 }
