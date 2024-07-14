@@ -10,12 +10,12 @@
 	},
 	"events": [
 		{
-			"name":"\\packages\\email\\events\\senders",
-			"listener": "listeners\\settings\\email@senders_list"
+			"name":"packages/email/Events/Senders",
+			"listener": "packages/phpmaile_emailsender/Listeners/Settings/Email@senders_list"
 		},
 		{
-			"name":"\\packages\\base\\view\\events\\afterLoad",
-			"listener": "listeners\\settings\\email@senders_addAssets"
+			"name":"packages/base/View/Events/AfterLoad",
+			"listener": "packages/phpmaile_emailsender/Listeners/Settings/Email@senders_addAssets"
 		}
 	]
 }
